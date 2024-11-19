@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StatusBar, View, Text, ImageBackground, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StatusBar, View, ImageBackground, Image, StyleSheet, Platform } from 'react-native'
 import bgImage from '../assets/bgImg.jpg'
 import Logo from '../assets/logo.png'
 
@@ -14,9 +14,9 @@ export default function Home() {
     const insets = useSafeAreaInsets();
 
     useEffect(() => {
-        SystemNavigationBar.setNavigationColor('translucent');
-        StatusBar.setTranslucent(true);  // Makes the status bar translucent
-        StatusBar.setBackgroundColor('transparent');
+        SystemNavigationBar.setNavigationColor('translucent')
+        Platform.OS === 'android' &&  StatusBar.setTranslucent(true)
+        Platform.OS === 'android' && StatusBar.setBackgroundColor('transparent')
     }, [])
 
 
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
         width: 170,
         alignSelf: 'center',
         paddingTop: 100
-
     },
     logo: {
         width: 150,

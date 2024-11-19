@@ -1,6 +1,7 @@
-import {View, Text, StyleSheet, TouchableOpacity, Switch, Alert} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Switch, Alert, Image, ScrollView} from 'react-native';
 
-import Header from '../../components/Header';
+import Logo from '../../assets/logo.png'
+
 import Screen from '../../components/Screen';
 import AppTextInput from '../../components/AppTextInput';
 import ErrorText from '../../components/ErrorText';
@@ -9,6 +10,7 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 import { jwtDecode } from "jwt-decode";
 import * as Keychain from 'react-native-keychain'
+import { useNavigation } from '@react-navigation/native'
 
 import loginApi from '../../api/auth'
 import { useAuth } from '../../context/auth';
@@ -22,12 +24,13 @@ const VALIDATION_SCHEMA = yup.object().shape({
       /^[A-Za-z][A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
       'Invalid Email Format',
     ),
-  password: yup.string().trim().required('Password is required'),
+  password: yup.string().trim().required('Password is required').min('5'),
 });
 
 
 const Login = () => {
   const { updateUser } = useAuth()
+  const navigation = useNavigation()
 
   const HANDLE_LOGIN_SUBMIT = async (values) => {
     const result = await loginApi.login(values.email, values.password)
@@ -43,11 +46,12 @@ const Login = () => {
   }
 
   return (
-      <Screen marginBottom={0} >
-        {/* <View style={{marginTop: 40, alignItems: 'center'}}>
-          <Header title="Login" icon="login" />
-        </View> */}
-          <Formik
+    <Screen marginBottom={0} >
+      <ScrollView>
+        <View style={{paddingVertical: 35}}>
+          <Image source={Logo} style={styles.logo}/>
+        </View>
+          <Formik 
             initialValues={{email: '', password: '', rememberMe: false}}
             onSubmit={ async (values, {setSubmitting, resetForm}) => {
               try{
@@ -72,8 +76,8 @@ const Login = () => {
               values,
             }) => (
               <>
-                <View style={{flex: 1, justifyContent: 'center', backgroundColor: 'green', paddingHorizontal: 10}}>
-                  <View style={{marginBottom: 10, backgroundColor: 'yellow' }}>
+                <View style={{flex: 1, paddingHorizontal: 10}}>
+                  <View style={{marginBottom: 10 }}>
                     <AppTextInput
                       icon="email"
                       placeholder="Enter email"
@@ -135,15 +139,29 @@ const Login = () => {
                       Login
                     </Text>
                   </TouchableOpacity>
+                  <View style={{flexDirection: 'row', marginTop: 10}}>
+                    <Text style={{alignSelf: 'flex-start', fontSize: 16 }} >Don't have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Auth", { screen: "Register" })} >
+                      <Text style={{ color: 'teal',  fontSize: 16 }}>Register</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </>
             )}
-          </Formik>
-      </Screen>
+        </Formik>
+      </ScrollView>
+    </Screen>
   );
 };
 
 const styles = StyleSheet.create({
+  logo: {
+    width: 150,
+    height: 150,
+    resizeMode: 'cover',
+    alignSelf: 'center',
+    borderRadius: 20,
+  },
   headerText: {
     fontSize: 32,
     padding: 10,

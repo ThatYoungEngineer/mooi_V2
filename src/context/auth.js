@@ -8,11 +8,11 @@ const AuthContext = createContext()
 
 export const useAuth = () => useContext(AuthContext)
 
-
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [categories, setCategories] = useState(null)
     const [loading, setLoading] = useState(true)
-    
+
     useEffect(() => {
         getUserFromKeyChain()
     }, [])
@@ -34,8 +34,13 @@ export const AuthProvider = ({ children }) => {
         } else setUser(user)
     }
 
+    const updateCategories = (data) => {
+        setCategories(data)
+    }
+
+
     return (    
-        <AuthContext.Provider value = {{ user, updateUser, loading }} >
+        <AuthContext.Provider value = {{ user, updateUser, loading, updateCategories, categories }} >
             {children}
         </AuthContext.Provider>
     )

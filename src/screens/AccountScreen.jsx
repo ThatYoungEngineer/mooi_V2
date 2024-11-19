@@ -6,30 +6,26 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  ActivityIndicator,
   Alert
 } from 'react-native';
 
+import UserImage from '../assets/user.jpg'
 import Screen from '../components/Screen';
 import Header from '../components/Header';
 import ItemsSeparator from '../components/ItemsSeparator';
 import { useAuth } from '../context/auth';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { useNavigation } from '@react-navigation/native'
 import SystemNavigationBar from 'react-native-system-navigation-bar';
-
 
 const AccountScreen = () => {
  const navigation = useNavigation()
  const { user, updateUser } = useAuth()
- const headerHeight = useHeaderHeight()
 
   const menu = [
-    {id: 1, title: 'Listing', logo: 'format-list-bulleted', logoBg: '#ff4135'},
-    {id: 2, title: 'Messages', logo: 'message', logoBg: '#44bd5a'}
+    {id: 1, title: 'Listing', logo: 'format-list-bulleted', logoBg: '#ff3122'},
+    {id: 2, title: 'Messages', logo: 'message', logoBg: '#35c24f'}
   ];
 
   useEffect(() => {
@@ -65,15 +61,21 @@ const AccountScreen = () => {
           data={menu}
           keyExtractor={item => String(item.id)}
           ListHeaderComponent={ 
-            <View>
-              <Header title="Account" icon="account" /> 
-            </View>
+            <>
+              <View>
+                <Header title="Account" icon="account" /> 
+              </View>
+              <View style={{padding: 10, backgroundColor: 'white', flexDirection: 'row', marginBottom: 10 }}>
+                <Image source={UserImage} style={{width: 40, height: 40, backgroundColor: '#fd767639', borderRadius: 50}} />
+                <View style={{marginLeft: 10, justifyContent: 'space-between'}}>
+                  <Text style={{fontSize: 19, fontWeight: 500, color: '#111'}} >{user.name}</Text>
+                  <Text style={{fontSize: 13, fontWeight: 500, color: '#111'}}>{user.email}</Text>
+                </View>
+              </View>
+            </>
           }
           renderItem={({item}) => (
-            <TouchableOpacity
-              style={styles.menuItem}
-              onPress={() => navigation.navigate(item.title == "Listing" ? 'Feed' : item.title)}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate(item.title == "Listing" ? 'Feed' : item.title)}>
             <View style={styles.itemsContainer}>
               <View style={[styles.logo, {backgroundColor: item.logoBg}]}>
                 <Icon
@@ -90,9 +92,9 @@ const AccountScreen = () => {
           ListFooterComponent={ () => (
             <TouchableOpacity style={styles.logoutBtn} onPress={handleSignOut} >
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={[styles.logo, {backgroundColor: '#d8cd2a'}]}>
-                  <Entypo
-                    name="log-out"
+                <View style={[styles.logo, {backgroundColor: '#e7db3e'}]}>
+                  <Icon
+                    name="logout"
                     size={20}
                     color="white"
                     style={{height: 20, width: 20}}

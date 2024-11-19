@@ -42,7 +42,6 @@ const VALIDATION_SCHEMA = yup.object().shape({
 
 const CreateListing = () => {
   const [loading, setLoading] = useState(false)
-  const [reset, setReset] = useState(false)
 
   const INPUT_FIELDS = [
     {id: 1, name: 'title', placeholder: 'Title'},
@@ -51,15 +50,8 @@ const CreateListing = () => {
     {id: 4, name: 'description', placeholder: 'Description', multiline: true},
   ];
 
-  const CATEGORIES = [
-    {label: "Furniture", value: 1, icon: 'table-furniture', bgColor: 'green'},
-    {label: "Clothing", value: 2, icon: 'tshirt-v',  bgColor: 'yellow'},
-    {label: "Cameras", value: 3, icon: 'camera',  bgColor: 'pink'}
-  ]
-
   useEffect(() => {
 		SystemNavigationBar.setNavigationColor('white')
-    setReset(false)
   }, [])
 
   const handleFormSubmit = async (listing) => {

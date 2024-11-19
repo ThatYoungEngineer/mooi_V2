@@ -32,15 +32,14 @@ const App = () => {
 	function AuthStack() {
 		return (
 		<Stack.Navigator screenOptions={{
-			headerTransparent: true,
-			headerStyle: {
-			backgroundColor: 'transparent',
-			},
-			headerTitle: ''
+				headerTransparent: true,
+				headerStyle: { backgroundColor: 'transparent' },
+				headerBlurEffect: 'light'
 			}}
+			
 			initialRouteName="Home"
 		>
-			<Stack.Screen name="Home" component={Home} />
+			<Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
 			<Stack.Screen name="Register" component={Register} />
 			<Stack.Screen name="Login" component={Login} />
 		</Stack.Navigator>
