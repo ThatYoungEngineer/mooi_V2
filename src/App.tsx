@@ -58,7 +58,7 @@ const App = () => {
 			}}
 			initialRouteName="Listing"
 		>
-			<Stack.Screen name="Listing" component={Listing} />
+			<Stack.Screen name="Listing" component={Listing} options={{headerBlurEffect: 'light', headerTitle: "Products" }} />
 			<Stack.Screen 
 				name="ListingDetails" component={ListingDetails} 
 				options={({ route }) => ({

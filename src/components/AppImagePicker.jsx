@@ -14,7 +14,7 @@ import {useEffect, useRef, useState} from 'react';
 
 import {launchImageLibrary} from 'react-native-image-picker';
 
-export default function AppImagePicker({onChangeText}) {
+export default function AppImagePicker({onChangeText, value}) {
   
   const [selectedImages, setSelectedImages] = useState([])
   const scrollView = useRef()
@@ -31,7 +31,13 @@ export default function AppImagePicker({onChangeText}) {
   }, []);
 
   useEffect(() => {
-    onChangeText(selectedImages)
+    if (value?.length === 0 && selectedImages.length !== 0) {
+      setSelectedImages([]) 
+    }
+  }, [value]); 
+
+  useEffect(() => {
+    if (selectedImages) onChangeText(selectedImages)
   }, [selectedImages])
 
   const openImageLibrary = async () => {

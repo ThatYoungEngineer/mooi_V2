@@ -12,7 +12,7 @@ const AppTextInput = ({
 }) => {
   return (
     <View style={styles.container}>
-      {icon && <Icon name={icon} size={20} />}
+      {icon && <Icon name={icon} size={20} style={{paddingLeft: 10}} />}
       {multiline ? (
         <TextInput
           clearButtonMode="always"
@@ -44,8 +44,6 @@ const AppTextInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    paddingLeft: 10,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#eeeeee',
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    width: '90%',
+    flex: 1,
     paddingVertical: 20,
     paddingHorizontal: 10,
     fontSize: 17,

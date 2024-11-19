@@ -26,7 +26,7 @@ const Listings = () => {
 		SystemNavigationBar.setNavigationColor('white');
   }, [])
 
-  console.log('Listing image: ', listing[8]?.images )
+  console.log('Listing image: ', listing[10]?.images )
 
   return (
     <Screen>

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Text, View, StyleSheet, TouchableOpacity, Pressable, SafeAreaView, StatusBar, TouchableWithoutFeedback } from 'react-native';
+import { Modal, Text, View, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const AppPicker = ({ icon, placeholder, items, onChangeText }) => {
-  const [selected, setSelected] = useState(null);
+const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
+  const [selected, setSelected] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
-    selected && onChangeText(selected?.label)
+    if(!value) {
+      setSelected('')
+      onChangeText(selected)
+    }
+  }, [value])
+  
+  useEffect(() => {
+    if (selected) onChangeText(selected)
   }, [selected])
+
 
   return (
     <View style={styles.container}>
@@ -23,14 +31,14 @@ const AppPicker = ({ icon, placeholder, items, onChangeText }) => {
         <View style={styles.modalContainer} >
             <View style={[styles.modalHeader, {marginTop: insets.top}]}>
                 <Text style={{fontSize: 20}}>Select Categories</Text>
-                <TouchableWithoutFeedback onPress={() => setModalVisible(!modalVisible) }>
+                <Pressable onPress={() => setModalVisible(!modalVisible) }>
                     <Icon 
                         name="chevron-up" size={30} 
                         style={{
                             transform: [{ rotate: modalVisible ? '0deg' : '180deg' }]
                         }}
                     />
-                </TouchableWithoutFeedback>
+                </Pressable>
             </View>
             <View style={styles.modalBody}>
                 {items && items?.map(item => (
@@ -49,20 +57,12 @@ const AppPicker = ({ icon, placeholder, items, onChangeText }) => {
         </View>
       </Modal>
 
-      {icon && <Icon name={'camera'} size={20} /> }
-      <Pressable style={styles.input} onPress={() => setModalVisible(true)}>
-        <Text style={{ fontSize: 17, color: selected ? '#000' : '#0000005f' }}>
-            {selected ? selected.label : placeholder}
+      {icon && <Icon name={icon} size={20} style={{paddingLeft: 10}} /> }
+      <Pressable style={styles.input} onPress={() => setModalVisible(true)} >
+        <Text style={{ flex: 1,  fontSize: 17, color: selected ? '#000' : '#0000005f', paddingHorizontal: 10 }}>
+          {selected && value != '' ? selected.label : placeholder}
         </Text>
-        <Icon
-            name="chevron-down"
-            size={20}
-            color="#0000005f"
-            style={{
-                marginRight: icon ? 10 : 0,
-                transform: [{ rotate: modalVisible ? '180deg' : '0deg' }],
-            }}
-        />
+        <Icon name="chevron-down" size={20} style={[styles.chevronDown, { transform: [{ rotate: modalVisible ? '180deg' : '0deg' }] }]} />
     </Pressable>
     </View>
   );
@@ -70,9 +70,7 @@ const AppPicker = ({ icon, placeholder, items, onChangeText }) => {
 
 const styles = StyleSheet.create({
     modalContainer: {
-        flex: 1,
-        // backgroundColor: '#fff',
-       
+      flex: 1,       
     },
     modalHeader: {
         borderTopLeftRadius: 24,
@@ -98,19 +96,15 @@ const styles = StyleSheet.create({
     },  
 
   container: {
-    width: '100%',
-    paddingLeft: 10,
     flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: '#eeeeee',
     borderRadius: 8,
     backgroundColor: '#ff433529',
     alignItems: 'center',
   },
   input: {
-    width: '98%',
+    flex: 1,
     paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
     fontSize: 17,
     color: '#000',
     fontWeight: '600',
@@ -118,16 +112,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  buttonClose: {
-    marginTop: 20,
-    backgroundColor: '#ff4335',
-    padding: 10,
-    borderRadius: 8,
-  },
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  chevronDown: {
+    color : "#0000005f",
+    marginRight: 5,
   },
   modalText: {
     marginBottom: 15,

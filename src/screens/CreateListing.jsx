@@ -42,6 +42,7 @@ const VALIDATION_SCHEMA = yup.object().shape({
 
 const CreateListing = () => {
   const [loading, setLoading] = useState(false)
+  const [reset, setReset] = useState(false)
 
   const INPUT_FIELDS = [
     {id: 1, name: 'title', placeholder: 'Title'},
@@ -58,14 +59,14 @@ const CreateListing = () => {
 
   useEffect(() => {
 		SystemNavigationBar.setNavigationColor('white')
+    setReset(false)
   }, [])
 
   const handleFormSubmit = async (listing) => {
+    setLoading(true)
     const result = await listingApi.postListing(listing)
-    console.log("RESULT: ", result)
-
-    if(!result.ok) return Alert.alert("Could not create listing!")
-    else Alert.alert("Success!")
+    setLoading(false)
+    return result
   }
 
   return (
@@ -80,9 +81,15 @@ const CreateListing = () => {
               category: '',
               description: '',
             }}
-            onSubmit={data => {
-              console.log('listing data....: ', data)
-              handleFormSubmit(data)
+            onSubmit={ async (data, {resetForm}) => {
+              handleFormSubmit(data).then((form) => {
+                if (!form.ok) return Alert.alert("Error!", "Could not create listing");
+                else {
+                  Alert.alert("Success!", "Listing has been created", [
+                    { text: "OK",  onPress: () => resetForm() }
+                  ])
+                }
+              })
             }}
             validationSchema={VALIDATION_SCHEMA}>
             {({
@@ -101,6 +108,7 @@ const CreateListing = () => {
                 <View style={{marginBottom: 10}}>
                   <AppImagePicker
                     onChangeText={images => setFieldValue('images', images)}
+                    value = {values.images}
                   />
                   {errors.images && touched.images && (
                     <ErrorText message={errors.images} />
@@ -114,7 +122,8 @@ const CreateListing = () => {
                       {item.name === 'category' ?
                         <>
                           <AppPicker placeholder="Category" items={CATEGORIES}
-                            onChangeText={category => setFieldValue('category', category)}
+                            onChangeText={category => setFieldValue('category', category?.value )}
+                            value = {values.category}
                           />
                           {errors[item.name] && touched[item.name] && (
                             <ErrorText message={errors[item.name]} />

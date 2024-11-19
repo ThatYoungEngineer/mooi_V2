@@ -44,9 +44,9 @@ const Login = () => {
 
   return (
       <Screen marginBottom={0} >
-        <View style={{marginTop: 40, alignItems: 'center'}}>
+        {/* <View style={{marginTop: 40, alignItems: 'center'}}>
           <Header title="Login" icon="login" />
-        </View>
+        </View> */}
           <Formik
             initialValues={{email: '', password: '', rememberMe: false}}
             onSubmit={ async (values, {setSubmitting, resetForm}) => {
@@ -72,8 +72,8 @@ const Login = () => {
               values,
             }) => (
               <>
-                <View style={{padding: 10, flex: 1, justifyContent: 'center'}}>
-                  <View style={{marginBottom: 10}}>
+                <View style={{flex: 1, justifyContent: 'center', backgroundColor: 'green', paddingHorizontal: 10}}>
+                  <View style={{marginBottom: 10, backgroundColor: 'yellow' }}>
                     <AppTextInput
                       icon="email"
                       placeholder="Enter email"
