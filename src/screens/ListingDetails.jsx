@@ -5,6 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image'
 import { useAuth } from '../context/auth';
 
+import PushNotification from 'react-native-push-notification';
+import { Button } from 'react-native';
+import { useEffect } from 'react';
+
 export default function ListingDetails({route}) {
   const headerHeight = useHeaderHeight();
   const navigation = useNavigation()
@@ -13,6 +17,28 @@ export default function ListingDetails({route}) {
   const handleNavigateToProfile = () => {
     navigation.navigate('Profile')  
   };
+
+  const sendNotification = (title) => {
+    PushNotification.localNotification({
+      channelId: 'your-channel-id', // You must create a channel for Android
+      title: title,
+      message: 'This seems best fit for your interest. Happy Shopping :)', 
+      userInfo: { customData: 'Some custom data' },
+    });
+  };
+
+  useEffect(() => {
+    PushNotification.createChannel(
+      {
+        channelId: 'your-channel-id',  // Must be unique
+        channelName: 'Default Channel',
+        channelDescription: 'A channel for basic notifications',
+        soundName: 'default',
+        importance: 4, // Can be 0-4 (higher is more important)
+      },
+      (created) => console.log(`createChannel returned '${created}'`)
+    );
+  }, []);
 
   return (
     <View style={{paddingTop: headerHeight, flex: 1, backgroundColor: '#fff'}}>
@@ -40,7 +66,12 @@ export default function ListingDetails({route}) {
               right={props => <List.Icon {...props} icon="chevron-right" />}
             />
           </View>
-        </TouchableOpacity>       
+        </TouchableOpacity>      
+        <TouchableOpacity style={{marginTop: 20, backgroundColor: '#ff8a82', padding: 10, borderRadius: 20}} onPress={() => sendNotification(route.params.item.title)} >
+          <Text style={{justifyContent: 'center', textAlign: 'center'}}>
+            Ping Seller
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   )

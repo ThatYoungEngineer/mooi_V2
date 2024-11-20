@@ -119,5 +119,6 @@ dependencies {
         implementation jscFlavor
     }
     implementation project(':react-native-vector-icons')
-    // implementation project(':react-native-push-notification')
+    implementation project(':react-native-push-notification')
+
 }
