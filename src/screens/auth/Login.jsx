@@ -53,7 +53,7 @@ const Login = () => {
         </View>
           <Formik 
             initialValues={{email: '', password: '', rememberMe: false}}
-            onSubmit={ async (values, {setSubmitting, resetForm}) => {
+            onSubmit={ async (values, {setSubmitting}) => {
               try{
                 await HANDLE_LOGIN_SUBMIT(values)
                 setSubmitting(false)

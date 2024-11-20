@@ -42,13 +42,13 @@ const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
             </View>
             <View style={styles.modalBody}>
                 {items && items?.map(item => (
-                    <TouchableOpacity key={item.value} onPress={() => {setSelected(item); setModalVisible(!modalVisible)}}>
+                    <TouchableOpacity key={item.id} onPress={() => {setSelected(item); setModalVisible(!modalVisible)}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
-                            <View style={[styles.iconContainer, {backgroundColor: item.bgColor}]}>
+                            <View style={[styles.iconContainer, {backgroundColor: item.backgroundColor}]}>
                                 <Icon name={item?.icon} size={30} />
                             </View>
-                            <Text style={{fontSize: 16, fontWeight: '500'}}>
-                                {item?.label}
+                            <Text style={{fontSize: 16, fontWeight: '500', color: item.color}}>
+                                {item?.name}
                             </Text>
                         </View>
                     </TouchableOpacity>
@@ -60,7 +60,7 @@ const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
       {icon && <Icon name={icon} size={20} style={{paddingLeft: 10}} /> }
       <Pressable style={styles.input} onPress={() => setModalVisible(true)} >
         <Text style={{ flex: 1,  fontSize: 17, color: selected ? '#000' : '#0000005f', paddingHorizontal: 10 }}>
-          {selected && value != '' ? selected.label : placeholder}
+          {selected && value != '' ? selected.name : placeholder}
         </Text>
         <Icon name="chevron-down" size={20} style={[styles.chevronDown, { transform: [{ rotate: modalVisible ? '180deg' : '0deg' }] }]} />
     </Pressable>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     modalBody:{
         flex: 1,
         padding: 20,
-        backgroundColor: '#f8f8f8',
+        backgroundColor: '#f38d8d',
     },
     iconContainer: {
         padding: 10,

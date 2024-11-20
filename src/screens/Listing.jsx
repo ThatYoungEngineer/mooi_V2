@@ -4,7 +4,8 @@ import {
   FlatList,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 
 import Screen from '../components/Screen';
@@ -20,25 +21,27 @@ import categoryApi from '../api/category';
 import { useAuth } from '../context/auth';
 
 const Listings = () => {
-  const {updateCategories} = useAuth()
-  const navigation = useNavigation();
-  const [categories, setCategories] = useState(null)
-
+  const { updateCategories, categories } = useAuth()
+  const navigation = useNavigation()
   const {data: listing, loading, error, request:fetchListing} = useApi(listingApi.getListing)  
-  const {data: categoriesData, request:fetchCategories} = useApi(categoryApi.getCategories)
+
+  const GET_CATEGORIES_DATA = async () => {
+    const result = await categoryApi.getCategories();
+    if (result.ok) {
+      updateCategories(result.data);
+    } else Alert.alert("Error", "Error fetching categories!")
+  };
 
   useEffect(() => {
-    fetchListing()
-    fetchCategories()
-		SystemNavigationBar.setNavigationColor('white');
-    // categoriesData && setCategories(categoriesData)
-  }, [])
-
-  // useEffect(() => {
-  //   if (categories) {
-  //     updateCategories(categories);
-  //   }
-  // }, [categories]); 
+    fetchListing();
+    if (!categories) GET_CATEGORIES_DATA()
+    SystemNavigationBar.setNavigationColor('transparent');
+  }, []); 
+    
+  const getCategoryNameFromId = (categoryId) => {
+    const category = categories?.find(c => c.id === categoryId)
+    return category?.name || 'N/A'
+  }
 
   return (
     <Screen>
@@ -47,18 +50,17 @@ const Listings = () => {
         keyExtractor={item => String(item.id)}
         ListHeaderComponent={<Header title="Products" icon="store" />}
         renderItem={({item}) => (
-          <TouchableOpacity style={{padding: 15}} onPress={()=>navigation.navigate("ListingDetails", {item})}>
+          <TouchableOpacity style={{padding: 15}} onPress={()=>navigation.navigate("ListingDetails", {item, listing} )}>
             <View style={styles.listingsContainer}>
               <FastImage style={styles.image} source={{uri: item?.images[0].url}}  />
               <View style={styles.textContainer}>
                 <View style={{flexDirection: 'row'}}>
-                  <Text style={{flex:1, fontSize: 18, fontWeight: 500, color: '#000'}} >
+                  <Text style={{flex:1, fontSize: 18, fontWeight: 500, color: '#000', alignSelf: 'center', paddingRight: 15}} numberOfLines={2} >
                     {item.title}
                   </Text>
-                  <Text style={{ fontSize: 18, fontWeight: 500, color: '#000'}} >
-                    {item.categoryId}
+                  <Text style={{ fontSize: 10, fontWeight: 500, color: '#ff4135', alignSelf: 'center', backgroundColor: '#ff746a28', padding: 10, borderRadius: 50}} >
+                    {getCategoryNameFromId(item.categoryId)}
                   </Text>
-
                 </View>
                 <Text style={{fontSize: 16, fontWeight: 400, color: '#0fb728', marginTop: 5}}>
                   ${item.price}

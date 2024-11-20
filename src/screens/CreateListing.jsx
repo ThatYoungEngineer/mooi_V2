@@ -6,6 +6,7 @@ import {
   Text,
   ScrollView,
   Alert,
+  ActivityIndicator
 } from 'react-native';
 
 import { useEffect, useState } from 'react';
@@ -22,6 +23,7 @@ import AppPicker from '../components/AppPicker';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 import listingApi from '../api/listing';
+import { useAuth } from '../context/auth';
 
 const VALIDATION_SCHEMA = yup.object().shape({
   images: yup
@@ -42,6 +44,7 @@ const VALIDATION_SCHEMA = yup.object().shape({
 
 const CreateListing = () => {
   const [loading, setLoading] = useState(false)
+  const { categories } = useAuth()
 
   const INPUT_FIELDS = [
     {id: 1, name: 'title', placeholder: 'Title'},
@@ -49,10 +52,6 @@ const CreateListing = () => {
     {id: 3, name: 'category', placeholder: 'Category'},
     {id: 4, name: 'description', placeholder: 'Description', multiline: true},
   ];
-
-  useEffect(() => {
-		SystemNavigationBar.setNavigationColor('white')
-  }, [])
 
   const handleFormSubmit = async (listing) => {
     setLoading(true)
@@ -113,8 +112,8 @@ const CreateListing = () => {
                     <>
                       {item.name === 'category' ?
                         <>
-                          <AppPicker placeholder="Category" items={CATEGORIES}
-                            onChangeText={category => setFieldValue('category', category?.value )}
+                          <AppPicker placeholder="Category" items={categories}
+                            onChangeText={category => setFieldValue('category', category?.id )}
                             value = {values.category}
                           />
                           {errors[item.name] && touched[item.name] && (
@@ -146,8 +145,15 @@ const CreateListing = () => {
                     <TouchableOpacity
                       style={styles.postBtn}
                       onPress={handleSubmit}
+                      disabled={!isValid || isSubmitting || !dirty}
                     >
-                      <Text style={styles.postText}> {loading ? "loading.." : "Post" } </Text>
+                      {loading ?
+                        <Text style={[styles.postText, {opacity: !isValid || isSubmitting || !dirty ? .5 : 1 }]} >Loading <ActivityIndicator color="white" style={{alignSelf: 'center'}} /> </Text>
+                      :
+                        <Text style={[styles.postText, {opacity: !isValid || isSubmitting || !dirty ? .5 : 1 }]} >
+                          Post
+                        </Text>
+                      }
                     </TouchableOpacity>  
                   )}
                 />
@@ -178,6 +184,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: 'white',
     fontFamily: 'System',
+    alignSelf: 'center'
   },
   postBtnDisabled: {
     opacity: 0.4,

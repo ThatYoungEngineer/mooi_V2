@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { StatusBar ,TouchableOpacity, ActivityIndicator, Platform } from "react-native";
 
 import {AccountScreen, Listing, Messages, CreateListing, Home, ListingDetails} from './screens'
 import Register from './screens/auth/Register'
 import Login from './screens/auth/Login'
 
+import SystemNavigationBar from "react-native-system-navigation-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -25,85 +26,84 @@ const App = () => {
 	const { user, loading } = useAuth()
 
 	useEffect(() => {
-	  StatusBar.setBarStyle('dark-content'); // Sets text/icons to dark
+	  StatusBar.setBarStyle('dark-content')
+	  SystemNavigationBar.setNavigationColor('white');
 	}, [])
   
 
 	function AuthStack() {
 		return (
-		<Stack.Navigator screenOptions={{
-				headerTransparent: true,
-				headerStyle: { backgroundColor: 'transparent' },
-				headerBlurEffect: 'light'
-			}}
-			
-			initialRouteName="Home"
-		>
-			<Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
-			<Stack.Screen name="Register" component={Register} />
-			<Stack.Screen name="Login" component={Login} />
-		</Stack.Navigator>
-		);
+			<Stack.Navigator 
+				screenOptions={{
+					headerTransparent: true,
+					headerStyle: { backgroundColor: 'transparent' },
+					headerBlurEffect: 'light'
+				}}
+				initialRouteName="Home"
+			>
+				<Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
+				<Stack.Screen name="Register" component={Register} />
+				<Stack.Screen name="Login" component={Login} />
+			</Stack.Navigator>
+		)
 	}
 
 	function ListingStack() {
 		return (
-		<Stack.Navigator screenOptions={{
-			headerTransparent: true,
-			headerStyle: {
-			backgroundColor: 'transparent',
-			},
-			headerTitle: ''
-			}}
-			initialRouteName="Listing"
-		>
-			<Stack.Screen name="Listing" component={Listing} options={{headerBlurEffect: 'light', headerTitle: "Products" }} />
-			<Stack.Screen 
-				name="ListingDetails" component={ListingDetails} 
-				options={({ route }) => ({
-					presentation: 'modal',
-					animation: 'slide_from_right',
-					headerTitle: route?.params?.item?.title || 'Details',
-					headerStyle: {
-						backgroundColor: 'white'
-					},
-					headerTintColor: '#ff4135'
-				})} 
-			/>
-		</Stack.Navigator>
-		);
+			<Stack.Navigator screenOptions={{
+				headerTransparent: true,
+				headerStyle: {
+				backgroundColor: 'transparent',
+				},
+				headerTitle: ''
+				}}
+				initialRouteName="Listing"
+			>
+				<Stack.Screen name="Listing" component={Listing} />
+				<Stack.Screen 
+					name="ListingDetails" component={ListingDetails} 
+					options={({ route }) => ({
+						presentation: 'containedModal',
+						animation: 'slide_from_right',
+						headerTitle: route?.params?.item?.title || 'Details',
+						headerStyle: { backgroundColor: 'white' },
+						headerTintColor: '#ff4135'
+					})} 
+				/>
+			</Stack.Navigator>
+		)
 	}
 
 	function AccountStack() {
 		return (
-		<Stack.Navigator screenOptions={{
-			headerTransparent: true,
-			headerStyle: {
-				backgroundColor: 'transparent',
-			},
-			headerTitle: ''
-			}}
-			initialRouteName="AccountScreen"
-		>
-			<Stack.Screen name="AccountScreen" component={AccountScreen} />
-			<Stack.Screen name="Messages" component={Messages} options={{
-				headerBlurEffect: 'regular',
-				headerLeft: ({ canGoBack }) => {
-					if (Platform.OS === 'android') {
-					  return (
-						canGoBack && (
-						  <TouchableOpacity onPress={() => navigation.goBack()}>
-							<View  style={{ width: 40, height: 40, backgroundColor: '#ffffffc8', borderRadius: 50, alignItems: 'center', justifyContent: 'center', borderColor: 'grey', borderWidth: 0.2 }} >
-							  <IconMI name="arrow-back" size={20} style={{ width: 20 }} />
-							</View>
-						  </TouchableOpacity>
-						)
-					  );
-					}}
+			<Stack.Navigator screenOptions={{
+				headerTransparent: true,
+				headerStyle: {
+					backgroundColor: 'transparent',
+				},
+				headerTitle: ''
 				}}
-			/>
-		</Stack.Navigator>
-		);
+				initialRouteName="AccountScreen"
+			>
+				<Stack.Screen name="AccountScreen" component={AccountScreen} />
+				<Stack.Screen name="Messages" component={Messages} options={{
+					headerBlurEffect: 'regular',
+					headerLeft: ({ canGoBack }) => {
+						if (Platform.OS === 'android') {
+						return (
+							canGoBack && (
+							<TouchableOpacity onPress={() => navigation.goBack()}>
+								<View  style={{ width: 40, height: 40, backgroundColor: '#ffffffc8', borderRadius: 50, alignItems: 'center', justifyContent: 'center', borderColor: 'grey', borderWidth: 0.2 }} >
+								<IconMI name="arrow-back" size={20} style={{ width: 20 }} />
+								</View>
+							</TouchableOpacity>
+							)
+						);
+						}}
+					}}
+				/>
+			</Stack.Navigator>
+		)
 	}
 
 	function MainTabNavigator() {

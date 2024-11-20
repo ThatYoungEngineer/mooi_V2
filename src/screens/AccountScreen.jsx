@@ -29,7 +29,7 @@ const AccountScreen = () => {
   ];
 
   useEffect(() => {
-		SystemNavigationBar.setNavigationColor('white')
+		SystemNavigationBar.setNavigationColor('transparent')
   }, [])
 
   const handleSignOut = () => {

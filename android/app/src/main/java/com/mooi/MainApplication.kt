@@ -20,7 +20,7 @@ class MainApplication : Application(), ReactApplication {
             PackageList(this).packages.apply {
               // Packages that cannot be autolinked yet can be added manually here, for example:
               // add(MyReactNativePackage())
-              add(VectorIconsPackage()) // Correct way to instantiate the package
+              add(VectorIconsPackage()) 
             }
 
         override fun getJSMainModuleName(): String = "index"

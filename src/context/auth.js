@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }) => {
         setCategories(data)
     }
 
-
     return (    
         <AuthContext.Provider value = {{ user, updateUser, loading, updateCategories, categories }} >
             {children}

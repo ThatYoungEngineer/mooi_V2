@@ -18,7 +18,6 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { useHeaderHeight } from '@react-navigation/elements';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const Messages = () => {
@@ -31,13 +30,11 @@ const Messages = () => {
   };
 
   const fetchMessages = async () => {
-    const res = await fetch("http://192.168.11.204:3000/messages")
-    const data = await res.json()
-    setMessages(data)
+    
   }
 
   useEffect(() => {
-    fetchMessages()
+    // fetchMessages()
     SystemNavigationBar.setNavigationColor('white');
   }, [])
 
@@ -117,7 +114,7 @@ const Messages = () => {
           />
         </View>
       ) : (
-        <View>
+        <View style={{marginTop: headerHeight}}>
           <Text style={{textAlign: 'center', fontSize: 20}}>
             No messages found!
           </Text>

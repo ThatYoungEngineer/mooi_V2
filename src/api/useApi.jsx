@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 const useApi = (apiFunc) => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState(null)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
