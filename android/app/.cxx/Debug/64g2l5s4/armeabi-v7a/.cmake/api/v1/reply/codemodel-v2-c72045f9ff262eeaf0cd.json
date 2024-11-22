@@ -15,7 +15,8 @@
 						5,
 						6,
 						7,
-						8
+						8,
+						9
 					],
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
@@ -116,7 +117,7 @@
 					"source" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-safe-area-context/android/src/main/jni",
 					"targetIndexes" : 
 					[
-						8
+						9
 					]
 				},
 				{
@@ -132,6 +133,21 @@
 					"targetIndexes" : 
 					[
 						7
+					]
+				},
+				{
+					"build" : "rnsvg_autolinked_build",
+					"jsonFile" : "directory-rnsvg_autolinked_build-Debug-aa75846149d7053790a1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni",
+					"targetIndexes" : 
+					[
+						8
 					]
 				},
 				{
@@ -164,7 +180,8 @@
 						5,
 						6,
 						7,
-						8
+						8,
+						9
 					],
 					"name" : "appmodules",
 					"targetIndexes" : 
@@ -177,7 +194,8 @@
 						5,
 						6,
 						7,
-						8
+						8,
+						9
 					]
 				}
 			],
@@ -186,63 +204,70 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appmodules::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appmodules-Debug-cdfe283f953b683205fb.json",
+					"jsonFile" : "target-appmodules-Debug-45bc8771dede14ba2b50.json",
 					"name" : "appmodules",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "react_codegen_RNImagePickerSpec::@f66ee9a2efecfb28bee4",
-					"jsonFile" : "target-react_codegen_RNImagePickerSpec-Debug-73a56b5946f0dc9bed99.json",
+					"jsonFile" : "target-react_codegen_RNImagePickerSpec-Debug-a264b7326e3a4304328f.json",
 					"name" : "react_codegen_RNImagePickerSpec",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "react_codegen_RNKeychainSpec::@f9a2cb36ebca2de4baf9",
-					"jsonFile" : "target-react_codegen_RNKeychainSpec-Debug-a0350f10a0ce508c881d.json",
+					"jsonFile" : "target-react_codegen_RNKeychainSpec-Debug-9fcadc81d0d5d1440d52.json",
 					"name" : "react_codegen_RNKeychainSpec",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "react_codegen_RNPermissionsSpec::@7ad697819b753921c957",
-					"jsonFile" : "target-react_codegen_RNPermissionsSpec-Debug-4af8df00602b38b7a535.json",
+					"jsonFile" : "target-react_codegen_RNPermissionsSpec-Debug-c63d8e23a3e6eb58a9ea.json",
 					"name" : "react_codegen_RNPermissionsSpec",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 8,
+					"directoryIndex" : 9,
 					"id" : "react_codegen_RNVectorIconsSpec::@479809fae146501fd34d",
-					"jsonFile" : "target-react_codegen_RNVectorIconsSpec-Debug-880ba339a5692be2f814.json",
+					"jsonFile" : "target-react_codegen_RNVectorIconsSpec-Debug-f7df270d516e128965e3.json",
 					"name" : "react_codegen_RNVectorIconsSpec",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "react_codegen_rnasyncstorage::@1596841e19ec5b9eeffe",
-					"jsonFile" : "target-react_codegen_rnasyncstorage-Debug-7a15a4526d9d318a0605.json",
+					"jsonFile" : "target-react_codegen_rnasyncstorage-Debug-335471b3218fb5ec914e.json",
 					"name" : "react_codegen_rnasyncstorage",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "react_codegen_rngesturehandler_codegen::@39f233abcd2c728bc6ec",
-					"jsonFile" : "target-react_codegen_rngesturehandler_codegen-Debug-3a05401e7f77338cb384.json",
+					"jsonFile" : "target-react_codegen_rngesturehandler_codegen-Debug-db50caa5ce11de05a47f.json",
 					"name" : "react_codegen_rngesturehandler_codegen",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 7,
 					"id" : "react_codegen_rnscreens::@25bcbd507e98d3a854ad",
-					"jsonFile" : "target-react_codegen_rnscreens-Debug-75be89a7d02c413b3c61.json",
+					"jsonFile" : "target-react_codegen_rnscreens-Debug-a379ed7e7a4beadd49f8.json",
 					"name" : "react_codegen_rnscreens",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "react_codegen_rnsvg::@4f40eb209d0c0b4a3b65",
+					"jsonFile" : "target-react_codegen_rnsvg-Debug-173e350bde57bb4109fd.json",
+					"name" : "react_codegen_rnsvg",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "react_codegen_safeareacontext::@7984cd80db47aa7b952a",
-					"jsonFile" : "target-react_codegen_safeareacontext-Debug-780fea40c8a220a6d085.json",
+					"jsonFile" : "target-react_codegen_safeareacontext-Debug-0084baecec4fbec4463f.json",
 					"name" : "react_codegen_safeareacontext",
 					"projectIndex" : 0
 				}
@@ -252,7 +277,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/arm64-v8a",
+		"build" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a",
 		"source" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup"
 	},
 	"version" : 

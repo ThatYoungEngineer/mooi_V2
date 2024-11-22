@@ -7,7 +7,8 @@ import {
   Image,
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native';
 
 import Header from '../components/Header';
@@ -22,6 +23,7 @@ import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 const Messages = () => {
   const [messages, setMessages] = useState(null);
+  const [error, setError] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const headerHeight = useHeaderHeight();
 
@@ -30,18 +32,25 @@ const Messages = () => {
   };
 
   const fetchMessages = async () => {
-    
+    try {
+      const res = await fetch('https//50.10.10.184:3000/messages')
+      if(res) {
+        const data = await res.json()
+        setIsRefreshing(false)
+        setMessages(data)
+      }  
+    } catch (e) {
+      setError("No messages found!")
+      setIsRefreshing(false)
+    }
   }
 
   useEffect(() => {
-    // fetchMessages()
-    SystemNavigationBar.setNavigationColor('white');
+    fetchMessages()
   }, [])
 
   return (
     <Screen>
-      {messages?.length > 0 ? (
-        <View >
           <FlatList
             data={messages}
             keyExtractor={item => String(item.id)}
@@ -50,9 +59,18 @@ const Messages = () => {
                 <Header title="Messages" icon="message-text" /> 
               </View>
             }
-            ListFooterComponent={
+            ListFooterComponent={              
               <View style={{paddingBottom: 20}} />
             }
+            ListEmptyComponent={() => (
+              <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+                {error ? (
+                  <Text style={styles.errorText}>{error}</Text> // Display error
+                ) : (
+                  <Text style={styles.emptyText}>No messages found!</Text> // Default fallback
+                )}
+              </View>
+            )}
             renderItem={({item}) => (
               <GestureHandlerRootView style={{flex: 1}}>
                 <Swipeable
@@ -63,7 +81,8 @@ const Messages = () => {
                         <Icon name="trash" size={32} color="#ff0000" />
                       </TouchableWithoutFeedback>
                     </View>
-                  )}>
+                  )}
+                >
                   <TouchableNativeFeedback
                     style={{flex: 1, backgroundColor: 'blue'}}>
                     <View
@@ -100,26 +119,10 @@ const Messages = () => {
             refreshing={isRefreshing}
             onRefresh={() => {
               setIsRefreshing(true);
-              setMessages([
-                {
-                  id: 1,
-                  title: 'Khizer Awais',
-                  message: 'Messages has been refreshed!',
-                  userImage:
-                    'https://www.profilebakery.com/wp-content/uploads/2023/04/LINKEDIN-Profile-Picture-AI.jpg',
-                },
-              ]);
+              fetchMessages()
               setIsRefreshing(false);
             }}
           />
-        </View>
-      ) : (
-        <View style={{marginTop: headerHeight}}>
-          <Text style={{textAlign: 'center', fontSize: 20}}>
-            No messages found!
-          </Text>
-        </View>
-      )}
     </Screen>
   );
 };
@@ -130,21 +133,38 @@ const styles = StyleSheet.create({
     padding: 10,
     fontWeight: 'bold',
     textAlign: 'left',
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
   userImage: {
     width: 60,
     height: 60,
-    borderRadius: 30,
+    borderRadius: 30
   },
   rightActionsContainer: {
     backgroundColor: '#f8110021',
     width: 70,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
-    // marginRight: 10,
+    borderRadius: 5
   },
+  emptyContainer: {
+    flex: 1,
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  emptyText: {
+    color: '#666',
+    fontSize: 16,
+    textAlign: 'center'
+  }
 });
 
 export default Messages;

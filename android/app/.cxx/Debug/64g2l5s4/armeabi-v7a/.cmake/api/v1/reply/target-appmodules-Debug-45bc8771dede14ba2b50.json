@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/x86/libappmodules.so"
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/armeabi-v7a/libappmodules.so"
 		}
 	],
 	"backtrace" : 3,
@@ -21,7 +21,8 @@
 			"/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native/ReactAndroid/cmake-utils/ReactNative-application.cmake",
 			"CMakeLists.txt",
 			"/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
-			"/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt"
+			"/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
+			"/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -85,6 +86,15 @@
 				"file" : 3,
 				"line" : 80,
 				"parent" : 10
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 4,
+				"line" : 83,
+				"parent" : 12
 			}
 		]
 	},
@@ -94,7 +104,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC"
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC"
 				},
 				{
 					"backtrace" : 6,
@@ -182,6 +192,10 @@
 					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-screens/android/src/main/jni"
 				},
 				{
+					"backtrace" : 13,
+					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni"
+				},
+				{
 					"backtrace" : 4,
 					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/."
 				},
@@ -255,6 +269,22 @@
 				},
 				{
 					"backtrace" : 4,
+					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni/../../../../common/cpp"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni/../../../build/generated/source/codegen/jni"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-svg/android/src/main/jni/../../../build/generated/source/codegen/jni/react/renderer/components/rnsvg"
+				},
+				{
+					"backtrace" : 4,
 					"path" : "/Users/muhammadtalha/Documents/Projects/mooi/node_modules/react-native-vector-icons/android/build/generated/source/codegen/jni/."
 				},
 				{
@@ -321,6 +351,10 @@
 		},
 		{
 			"backtrace" : 4,
+			"id" : "react_codegen_rnsvg::@4f40eb209d0c0b4a3b65"
+		},
+		{
+			"backtrace" : 4,
 			"id" : "react_codegen_RNVectorIconsSpec::@479809fae146501fd34d"
 		}
 	],
@@ -335,27 +369,32 @@
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/x86/libreact_codegen_safeareacontext.so",
+				"fragment" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/armeabi-v7a/libreact_codegen_safeareacontext.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/x86/libreact_codegen_rnscreens.so",
+				"fragment" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/armeabi-v7a/libreact_codegen_rnscreens.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/build/intermediates/cxx/Debug/64g2l5s4/obj/armeabi-v7a/libreact_codegen_rnsvg.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/6dc174b9394f7f2da85e384b4bbf0f4a/transformed/jetified-fbjni-0.6.0/prefab/modules/fbjni/libs/android.x86/libfbjni.so",
+				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/6dc174b9394f7f2da85e384b4bbf0f4a/transformed/jetified-fbjni-0.6.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/095f498f1545b2a557a515b33db49b37/transformed/jetified-react-android-0.76.1-debug/prefab/modules/jsi/libs/android.x86/libjsi.so",
+				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/095f498f1545b2a557a515b33db49b37/transformed/jetified-react-android-0.76.1-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/095f498f1545b2a557a515b33db49b37/transformed/jetified-react-android-0.76.1-debug/prefab/modules/reactnative/libs/android.x86/libreactnative.so",
+				"fragment" : "/Users/muhammadtalha/.gradle/caches/8.10.2/transforms/095f498f1545b2a557a515b33db49b37/transformed/jetified-react-android-0.76.1-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so",
 				"role" : "libraries"
 			},
 			{
@@ -452,253 +491,253 @@
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/States.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/rngesturehandler_codegenJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/react/renderer/components/rngesturehandler_codegen/rngesturehandler_codegenJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/rngesturehandler_codegen-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir/rngesturehandler_codegen-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/RNImagePickerSpec-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/RNImagePickerSpec-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/RNImagePickerSpecJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/RNImagePickerSpecJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNImagePickerSpec_autolinked_build/CMakeFiles/react_codegen_RNImagePickerSpec.dir/react/renderer/components/RNImagePickerSpec/States.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/RNKeychainSpec-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/RNKeychainSpec-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/RNKeychainSpecJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/RNKeychainSpecJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNKeychainSpec_autolinked_build/CMakeFiles/react_codegen_RNKeychainSpec.dir/react/renderer/components/RNKeychainSpec/States.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/RNPermissionsSpec-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/RNPermissionsSpec-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/RNPermissionsSpecJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/RNPermissionsSpecJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNPermissionsSpec_autolinked_build/CMakeFiles/react_codegen_RNPermissionsSpec.dir/react/renderer/components/RNPermissionsSpec/States.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/RNVectorIconsSpec-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/RNVectorIconsSpec-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/ComponentDescriptors.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/ComponentDescriptors.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/EventEmitters.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/EventEmitters.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/Props.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/Props.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/RNVectorIconsSpecJSI-generated.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/RNVectorIconsSpecJSI-generated.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/ShadowNodes.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/ShadowNodes.cpp.o",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"isGenerated" : true,
-			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/States.cpp.o",
+			"path" : "/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir/react/renderer/components/RNVectorIconsSpec/States.cpp.o",
 			"sourceGroupIndex" : 1
 		}
 	],

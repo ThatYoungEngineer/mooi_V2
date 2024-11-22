@@ -1,13 +1,14 @@
-import {Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { useHeaderHeight } from '@react-navigation/elements';
-import { List } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import FastImage from 'react-native-fast-image'
+import { useEffect } from 'react';
+import {Text, ScrollView,  View, StyleSheet, TouchableOpacity } from 'react-native'
+
 import { useAuth } from '../context/auth';
 
-import PushNotification from 'react-native-push-notification';
-import { Button } from 'react-native';
-import { useEffect } from 'react';
+import { useHeaderHeight } from '@react-navigation/elements';
+import { useNavigation } from '@react-navigation/native';
+import { List } from 'react-native-paper';
+import FastImage from 'react-native-fast-image'
+
+import PushNotification from 'react-native-push-notification'
 
 export default function ListingDetails({route}) {
   const headerHeight = useHeaderHeight();
@@ -23,8 +24,8 @@ export default function ListingDetails({route}) {
       channelId: 'your-channel-id', // You must create a channel for Android
       title: title,
       message: 'This seems best fit for your interest. Happy Shopping :)', 
-      userInfo: { customData: 'Some custom data' },
-    });
+      userInfo: { customData: 'Some custom data' }
+    })
   };
 
   useEffect(() => {
@@ -37,13 +38,13 @@ export default function ListingDetails({route}) {
         importance: 4, // Can be 0-4 (higher is more important)
       },
       (created) => console.log(`createChannel returned '${created}'`)
-    );
+    )
   }, []);
 
   return (
-    <View style={{paddingTop: headerHeight, flex: 1, backgroundColor: '#fff'}}>
+    <ScrollView style={{paddingTop: headerHeight, flex: 1, backgroundColor: '#fff'}}>
       <FastImage source={{uri: route.params.item.images[0].url}} style={{width: "100%", height: 250, resizeMode: 'cover', backgroundColor: '#ff4335c'}} />
-      <View style={styles.textContainer}>
+      <View style={[styles.textContainer, {paddingBottom: 80}]}>
         <Text style={styles.title}>{route.params.item.title}</Text>
         <Text style={styles.price}>${route.params.item.price}</Text>
         <Text style={{ color: '#002479', marginTop: 10, fontStyle: route.params.item.description ? 'normal' : 'italic' }}>
@@ -68,18 +69,18 @@ export default function ListingDetails({route}) {
           </View>
         </TouchableOpacity>      
         <TouchableOpacity style={{marginTop: 20, backgroundColor: '#ff8a82', padding: 10, borderRadius: 20}} onPress={() => sendNotification(route.params.item.title)} >
-          <Text style={{justifyContent: 'center', textAlign: 'center'}}>
+          <Text style={{justifyContent: 'center', textAlign: 'center', color: '#22272a', fontWeight: 400}}>
             Ping Seller
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   textContainer: {
-    padding: 20,
+    padding: 20
   },
   title: {
     fontSize: 24

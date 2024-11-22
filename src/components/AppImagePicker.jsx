@@ -6,13 +6,14 @@ import {
   Image,
   FlatList,
   ScrollView,
-  TouchableWithoutFeedback,
+  Pressable,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {PERMISSIONS, request} from 'react-native-permissions';
 import {useEffect, useRef, useState} from 'react';
 
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 export default function AppImagePicker({onChangeText, value}) {
   
@@ -22,7 +23,7 @@ export default function AppImagePicker({onChangeText, value}) {
   const requestCameraRollPermission = async () => {
     const permission = Platform.OS === 'ios'
       ? PERMISSIONS.IOS.PHOTO_LIBRARY
-      : PERMISSIONS.ANDROID.READ_MEDIA_IMAGES;
+      : PERMISSIONS.ANDROID.ACCESS_MEDIA_LOCATION;
     await request(permission);
   };
 
@@ -31,10 +32,8 @@ export default function AppImagePicker({onChangeText, value}) {
   }, []);
 
   useEffect(() => {
-    if (value?.length === 0 && selectedImages.length !== 0) {
-      setSelectedImages([]) 
-    }
-  }, [value]); 
+    if (value?.length === 0 && selectedImages.length !== 0) setSelectedImages([])
+  }, [value])
 
   useEffect(() => {
     if (selectedImages) onChangeText(selectedImages)
@@ -44,22 +43,26 @@ export default function AppImagePicker({onChangeText, value}) {
     const RESULT = await launchImageLibrary({
       mediaType: 'photo',
       selectionLimit: 0,
-    });
+    })
     if (RESULT?.assets) {
-       setSelectedImages((prevImages) => [...(prevImages || []), ...RESULT.assets]);
-      if (onChangeText) {
-          onChangeText(selectedImages);
-      }
+      setSelectedImages((prevImages) => [...(prevImages || []), ...RESULT.assets]);
+      if (onChangeText) onChangeText(selectedImages)
     }
   };
 
   const handleImageDelete =  (item) => {
-    console.log("deleteImage: ", item.uri);
-     setSelectedImages((prevImages) =>
-      prevImages.filter((image) => image.uri !== item.uri)
-    );
-    onChangeText(selectedImages)
-  };
+    Alert.alert(
+      "Alert!",
+      "Are you sure you want to delete this image?",
+      [{ text: "No", style: "cancel" }, {
+        text: "Yes",
+        onPress: () => {
+          setSelectedImages((prevImages) => prevImages.filter((image) => image.uri !== item.uri))
+          onChangeText(selectedImages)
+        },
+      }]
+    )
+  }
   
   return (
     <View>
@@ -72,9 +75,13 @@ export default function AppImagePicker({onChangeText, value}) {
               horizontal
               scrollEnabled={false} // Disable FlatList's own scrolling
               renderItem={({ item }) => (
-                <TouchableWithoutFeedback onPress={() => handleImageDelete(item)}>
+                <View style={{position: 'relative'}}>
                   <Image source={{ uri: item.uri }} style={styles.selectedImage} />
-                </TouchableWithoutFeedback>
+                  <Pressable onPress={() => handleImageDelete(item)} style={{position: 'absolute', right: 10, top:0}}>
+                    <Icon name="close-circle" size={20} color="red" />                
+                  </Pressable>
+                </View>
+
               )}
               style={{ flexGrow: 0 }}
             />

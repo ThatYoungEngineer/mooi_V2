@@ -6,10 +6,11 @@ import {
   Text,
   ScrollView,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  Keyboard
 } from 'react-native';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Screen from '../components/Screen';
 import Header from '../components/Header';
@@ -20,7 +21,6 @@ import ErrorText from '../components/ErrorText';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import AppPicker from '../components/AppPicker';
-import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 import listingApi from '../api/listing';
 import { useAuth } from '../context/auth';
@@ -75,11 +75,7 @@ const CreateListing = () => {
             onSubmit={ async (data, {resetForm}) => {
               handleFormSubmit(data).then((form) => {
                 if (!form.ok) return Alert.alert("Error!", "Could not create listing");
-                else {
-                  Alert.alert("Success!", "Listing has been created", [
-                    { text: "OK",  onPress: () => resetForm() }
-                  ])
-                }
+                else Alert.alert("Success!", "Listing has been created", [ { text: "OK",  onPress: () => resetForm() } ])
               })
             }}
             validationSchema={VALIDATION_SCHEMA}>
@@ -148,7 +144,10 @@ const CreateListing = () => {
                       disabled={!isValid || isSubmitting || !dirty}
                     >
                       {loading ?
-                        <Text style={[styles.postText, {opacity: !isValid || isSubmitting || !dirty ? .5 : 1 }]} >Loading <ActivityIndicator color="white" style={{alignSelf: 'center'}} /> </Text>
+                        <View style={{flexDirection: 'row', opacity: loading ? .5 : 1 }}>
+                          <Text style={[styles.postText, {fontWeight: 200, marginRight: 5}]}>Posting</Text>
+                          <ActivityIndicator size={22} color="white" />
+                        </View>
                       :
                         <Text style={[styles.postText, {opacity: !isValid || isSubmitting || !dirty ? .5 : 1 }]} >
                           Post
@@ -178,13 +177,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 25,
     alignSelf: 'center',
+    justifyContent: 'center',
   },
   postText: {
     fontWeight: 'bold',
     fontSize: 22,
     color: 'white',
     fontFamily: 'System',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   postBtnDisabled: {
     opacity: 0.4,

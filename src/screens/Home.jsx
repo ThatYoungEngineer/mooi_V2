@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { StatusBar, View, ImageBackground, Image, StyleSheet, Platform } from 'react-native'
+
 import bgImage from '../assets/bgImg.jpg'
 import Logo from '../assets/logo.png'
 
-import { Button } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
 import { useNavigation } from '@react-navigation/native'
+import { Button } from 'react-native-paper';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 export default function Home() {

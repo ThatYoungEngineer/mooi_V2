@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Text, View, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { Modal, Text, View, StyleSheet, TouchableOpacity, Pressable, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -40,7 +40,7 @@ const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
                     />
                 </Pressable>
             </View>
-            <View style={styles.modalBody}>
+            <ScrollView style={styles.modalBody}>
                 {items && items?.map(item => (
                     <TouchableOpacity key={item.id} onPress={() => {setSelected(item); setModalVisible(!modalVisible)}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
@@ -53,7 +53,7 @@ const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
                         </View>
                     </TouchableOpacity>
                 ))}
-            </View>
+            </ScrollView>
         </View>
       </Modal>
 
@@ -70,7 +70,7 @@ const AppPicker = ({ icon, placeholder, items, onChangeText, value }) => {
 
 const styles = StyleSheet.create({
     modalContainer: {
-      flex: 1,       
+      flex: 1
     },
     modalHeader: {
         borderTopLeftRadius: 24,
@@ -83,11 +83,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
         borderBottomWidth: 1,
         borderColor: '#ccc',
+        boxShadow: '0 0 20px 1px rgba(0, 0, 0, 0.25)'
     },
     modalBody:{
         flex: 1,
         padding: 20,
-        backgroundColor: '#f38d8d',
+        backgroundColor: '#a50606',
     },
     iconContainer: {
         padding: 10,

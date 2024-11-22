@@ -51,6 +51,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNPermissionsSpec_autolinked_build/cmake_install.cmake")
   include("/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/safeareacontext_autolinked_build/cmake_install.cmake")
   include("/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnscreens_autolinked_build/cmake_install.cmake")
+  include("/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/rnsvg_autolinked_build/cmake_install.cmake")
   include("/Users/muhammadtalha/Documents/Projects/mooi/android/app/.cxx/Debug/64g2l5s4/x86/RNVectorIconsSpec_autolinked_build/cmake_install.cmake")
 
 endif()
