@@ -7,8 +7,6 @@ import {
   Image,
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
-  Platform,
-  ScrollView
 } from 'react-native';
 
 import Header from '../components/Header';
@@ -16,9 +14,8 @@ import Screen from '../components/Screen';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useHeaderHeight } from '@react-navigation/elements';
-import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 
 const Messages = () => {
@@ -32,8 +29,9 @@ const Messages = () => {
   };
 
   const fetchMessages = async () => {
+    setIsRefreshing(true)
     try {
-      const res = await fetch('https//50.10.10.184:3000/messages')
+      const res = await fetch('http://10.10.10.114:3000/messages')
       if(res) {
         const data = await res.json()
         setIsRefreshing(false)
@@ -64,11 +62,20 @@ const Messages = () => {
             }
             ListEmptyComponent={() => (
               <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
-                {error ? (
-                  <Text style={styles.errorText}>{error}</Text> // Display error
-                ) : (
-                  <Text style={styles.emptyText}>No messages found!</Text> // Default fallback
-                )}
+                {error && 
+                  <>
+                    <Text style={{marginTop: 30, paddingHorizontal: 10, textAlign: 'center', fontStyle: 'italic', color: '#fb1100', fontWeight: 500, fontSize: 20 }} >No Messages found!</Text>
+                    <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignContent: 'center'}}>
+                      <Text style={{fontStyle: 'italic', color: '#6c6665', fontWeight: 400, fontSize: 14 }} >Scroll down to refresh..</Text>
+                      <Icon
+                        name="reload"
+                        size={20}
+                        color="#6c6665"
+                        style={{alignSelf: 'center'}}
+                      />
+                    </View>
+                  </>
+                }
               </View>
             )}
             renderItem={({item}) => (
@@ -78,7 +85,7 @@ const Messages = () => {
                     <View style={styles.rightActionsContainer}>
                       <TouchableWithoutFeedback
                         onPress={() => handleDeleteMessage(item)}>
-                        <Icon name="trash" size={32} color="#ff0000" />
+                        <Icon name="trash-can" size={32} color="#ff0000" />
                       </TouchableWithoutFeedback>
                     </View>
                   )}

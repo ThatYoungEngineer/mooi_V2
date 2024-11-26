@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, memo } from 'react'
 import {
   View,
   FlatList,
@@ -14,6 +14,7 @@ import Header from '../components/Header';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import useApi from '../api/useApi';
 import listingApi from '../api/listing'; 
@@ -22,33 +23,31 @@ import { useAuth } from '../context/auth';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useNetInfo } from "@react-native-community/netinfo"
 
-
 const Listings = () => {
-  console.log("pretty")
+  console.log("iop")
   const { updateCategories, categories } = useAuth()
-  const navigation = useNavigation()
   const {data: listing, loading, error, request:fetchListing} = useApi(listingApi.getListing)  
+  const categoriesData = useApi(categoryApi.getCategories)  
+
+  const navigation = useNavigation()
 	const netInfo = useNetInfo()
   const headerHeight = useHeaderHeight()
 
-
-  const GET_CATEGORIES_DATA = useCallback(async () => {
-    const result = await categoryApi.getCategories();
-    if (result.ok) {
-      updateCategories(result.data);
-    } else Alert.alert('Error', 'Error fetching categories!');
-  }, [updateCategories]);
+  const fetchPostsData = () => {
+    fetchListing(); 
+    if (categoriesData.data == null) categoriesData.request()
+    if (!categories && categoriesData.data) updateCategories(categoriesData.data)
+  }  
 
   useEffect(() => {
-    fetchListing();
-    if (!categories) GET_CATEGORIES_DATA()
-    SystemNavigationBar.setNavigationColor('transparent');
-  }, []); 
+    fetchPostsData()
+    SystemNavigationBar.setNavigationColor('transparent')
+  }, [])
     
-  const getCategoryNameFromId = useCallback ( (categoryId) => {
-    const category = categories?.find(c => c.id === categoryId)
+  const getCategoryNameFromId = useCallback((categoryId) => {
+    const category = categoriesData.data?.find(c => c.id === categoryId)
     return category?.name || 'N/A'
-  }, [categories])
+  }, [categoriesData.data])
 
   const renderItem = useCallback( ({item}) => (
     <TouchableOpacity style={{padding: 15}} onPress={()=>navigation.navigate("ListingDetails", {item, listing} )}>
@@ -79,6 +78,36 @@ const Listings = () => {
         ListHeaderComponent={
           <View style={{ paddingTop: (netInfo.isConnected && netInfo.isInternetReachable) ? 0 : headerHeight/2}} >
             <Header title="Products" icon="store" />
+            {(error && listing == null) &&
+              <>
+                <Text style={{marginTop: 30, paddingHorizontal: 10, textAlign: 'center', fontStyle: 'italic', color: '#fb1100', fontWeight: 500, fontSize: 20 }} >No listings found!</Text>
+                <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignContent: 'center'}}>
+                  <Text style={{fontStyle: 'italic', color: '#6c6665', fontWeight: 400, fontSize: 14 }} >Scroll down to refresh..</Text>
+                  <Icon
+                    name="reload"
+                    size={20}
+                    color="#6c6665"
+                    style={{alignSelf: 'center'}}
+                  />
+                </View>
+              </>
+            }
+            {error && 
+              Alert.alert(
+                "Server Error",
+                error || 'Something went wrong!',
+                [
+                  {
+                    text: "Try Again",
+                    onPress: fetchListing,
+                  },
+                  {
+                    text: "Cancel",
+                    style: "cancel",
+                  },
+                ]
+              )
+            }
           </View>
         }
         renderItem={renderItem}
@@ -114,4 +143,8 @@ const styles = StyleSheet.create({
     padding: 15,
   },
 });
-export default Listings;
+
+const MemoizedListings = memo(Listings)
+export default MemoizedListings
+
+// export default Listings;

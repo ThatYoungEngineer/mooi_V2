@@ -1,5 +1,4 @@
 import client from './client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const endpoint = '/listings'
 
@@ -7,7 +6,6 @@ const endpoint = '/listings'
 const getListing = () => {
     return client.get(endpoint)
 }
-
 const postListing = (listing) => {
     const data = new FormData()
 

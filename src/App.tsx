@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useCallback } from "react";
 import { StatusBar, TouchableOpacity, ActivityIndicator, Platform, View } from "react-native";
-import { AccountScreen, Listing, Messages, CreateListing, Home, ListingDetails } from "./screens";
+import { AccountScreen, MemoizedListings, Messages, CreateListing, Home, ListingDetails } from "./screens";
 import Register from "./screens/auth/Register";
 import Login from "./screens/auth/Login";
 
@@ -54,7 +54,7 @@ const App = () => {
     >
       <Stack.Screen
         name="Listing"
-        component={Listing}
+        component={MemoizedListings}
         options={{
           headerShown: !netInfo.isConnected && !netInfo.isInternetReachable,
           headerTitle: "No Internet Connection",

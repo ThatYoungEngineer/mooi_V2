@@ -9,7 +9,7 @@
 
 import Home from './Home';
 import AccountScreen from './AccountScreen';
-import Listing from './Listing';
+import MemoizedListings from './Listing';
 import Messages from './Messages';
 import CreateListing from './CreateListing';
 import ModalScreen from './ModalScreen';
@@ -18,7 +18,7 @@ import ListingDetails from './ListingDetails';
 export {
     Home,
     AccountScreen,
-    Listing,
+    MemoizedListings,
     Messages,
     CreateListing,
     ModalScreen,
